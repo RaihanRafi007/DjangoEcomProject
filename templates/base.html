@@ -1,0 +1,81 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">    <link rel="stylesheet" href="{% static 'CSS/main.css' %}">
+    <title>{% block title_block %}E-com | Double-R {% endblock %}</title>
+    <style>
+        .card{
+            height: 380px;
+        }
+        .card-product:after{
+            content: '';
+            display: table;
+            clear: both;
+            visibility: hidden;
+        }
+        .card-product .price-new, .card-product .price{
+            margin-right: 5px;
+        }
+        .card-product .price-old{
+            color: #999;
+        }
+        .card-product .img-wrap{
+            border-radius: 3px;
+            overflow: hidden;
+            position: relative;
+            height: 220px;
+            text-align: center;
+        }
+        .card-product .img-wrap img{
+            max-height: 100%;
+            max-width: 100%;
+            object-fit: cover;
+        }
+        .card-product .info-wrap {
+            overflow: hidden;
+            padding: 15px;
+            border-top: 1px solid #eee;
+        }
+        .card-product .action-wrap{
+            padding-top: 4px;
+            margin-top: 4px;
+        }
+        .card-product .bottom-wrap{
+            padding: 15px;
+            border-top: 1px solid #eee;
+        }
+        .card-product .title{
+            margin-top: 0px;
+        }
+    </style>
+</head>
+<body>
+    {% include 'navbar.html' %}
+ <div class="container">
+     <div class="messages container mt-2">
+         {% if messages %}
+         {% for message in messages %}
+         <div {% if message.tags %} class="alert alert-{{message.tags}} {% endif %}" role="alert">
+            {{message}}
+            <button type="button" class="close" alert-dismissible data-bs-dismiss="alert" area-label='Close'><span area-hidden='true' >&times;</span></button>
+         </div>
+         {% endfor %}
+         {% endif %}
+     </div>
+
+     {% block body_block %} 
+     
+     {% endblock %}
+
+ </div>
+    
+ <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script>
+</body>
+</html>
